@@ -1,0 +1,67 @@
+/* styles.css */
+
+body {
+    font-family: "Times New Roman", serif;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 80px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 42px;
+    margin: 0;
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+}
+
+.header h2 {
+    font-size: 20px;
+    margin: 0;
+    color: #006EB6; 
+    line-height: 1.5; 
+}
+
+.grey-line {
+    border: none;
+    padding-top: -30px;
+    border-top: 1px solid gray; 
+    margin: 10px 0; 
+}
+
+.content {
+    text-align: left;
+}
+
+.content p {
+    margin-bottom: 16px;
+}
+
+.content ol {
+    margin-left: 20px;
+}
+
+.content ol li {
+    margin-bottom: 10px;
+}
+
+.emblem {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px; 
+}
