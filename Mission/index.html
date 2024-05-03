@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="styles.css">
     <title>BYU-Idaho Mission Statement</title>
 </head>
-<body>
+<body class="dark">
+    <select id="themeSelector">
+        <option value="light">Light</option>
+        <option value="dark" selected>Dark</option>
+    </select>
     <div class="container">
         <div class="header">
             <h1>MISSION STATEMENT</h1>
@@ -28,5 +32,7 @@
         <br>
         <img src="byui-logo_blue.webp" alt="BYU-Idaho Emblem" class="emblem">
     </div>
+
+    <script src="mission.js" defer></script>
 </body>
 </html>
