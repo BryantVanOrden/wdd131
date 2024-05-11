@@ -75,3 +75,12 @@ h3 {
     display: flex;
     justify-content: space-between; 
 }
+
+.skiptocontent a {
+    position: absolute;
+    left: -9999px;
+}
+
+.skiptocontent a:focus {
+    left: auto;
+}
