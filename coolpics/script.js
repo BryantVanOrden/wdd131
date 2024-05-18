@@ -1,49 +1,92 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const menuButton = document.querySelector('.menu-button');
-    const menu = document.querySelector('nav');
+document.getElementById("menuBtn").addEventListener("click", function() {
+    var nav = document.getElementById("mainNav");
+    var menuBtn = document.getElementById("menuBtn");
+    var hideBtn = document.getElementById("hideBtn");
+
+    nav.style.display = "flex";
+    menuBtn.style.display = "none";
+    hideBtn.style.display = "inline-block";
+});
+
+document.getElementById("hideBtn").addEventListener("click", function() {
+    var nav = document.getElementById("mainNav");
+    var menuBtn = document.getElementById("menuBtn");
+    var hideBtn = document.getElementById("hideBtn");
+
+    nav.style.display = "none";
+    menuBtn.style.display = "inline-block";
+    hideBtn.style.display = "none";
+});
+
+function handleResize() {
+    var nav = document.getElementById("mainNav");
+    var menuBtn = document.getElementById("menuBtn");
+    var hideBtn = document.getElementById("hideBtn");
+
+    if (window.innerWidth > 1000) {
+        nav.style.display = "flex";
+        menuBtn.style.display = "none";
+        hideBtn.style.display = "none";
+    } else {
+        nav.style.display = "none";
+        menuBtn.style.display = "inline-block";
+        hideBtn.style.display = "none";
+    }
+}
+
+
+window.addEventListener("resize", handleResize);
+
+
+window.onload = handleResize;
+
+function viewerTemplate(pic, alt) {
+    return `<div class="viewer">
+      <button class="close-viewer">X</button>
+      <img src="${pic}" alt="${alt}">
+      </div>`;
+  }
+  
+  
+  function viewHandler(event) {
+     
+      const clickedElement = event.target;
+  
+      
+      if (clickedElement.tagName === 'IMG') {
+          
+          const srcParts = clickedElement.getAttribute('src').split('-');
+  
+          
+          const fullImagePath = `${srcParts[0]}-full.${srcParts[1].split('.')[1]}`;
+  
+          
+          const viewerHTML = viewerTemplate(fullImagePath, clickedElement.getAttribute('alt'));
+  
+          
+          document.body.insertAdjacentHTML('afterbegin', viewerHTML);
+  
+          
+          const closeButton = document.querySelector('.close-viewer');
+          closeButton.addEventListener('click', closeViewer);
+      }
+  }
+  
+
+function closeViewer() {
     const viewer = document.querySelector('.viewer');
-    const viewerImage = viewer.querySelector('img');
-    const closeViewerButton = viewer.querySelector('.close-viewer');
-
-    function toggleMenu() {
-        menu.classList.toggle('show');
+    if (viewer) {
+        viewer.remove();
     }
+}
 
-    function handleResize() {
-        if (window.innerWidth > 600) {
-            menu.classList.remove('hide');
-            menu.classList.remove('show');
-        } else {
-            menu.classList.add('hide');
-        }
+
+const gallery = document.querySelector('.gallery');
+gallery.addEventListener('click', viewHandler);
+
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('close-viewer')) {
+        closeViewer();
     }
-
-    function viewerTemplate(pic, alt) {
-        viewerImage.src = pic;
-        viewerImage.alt = alt;
-        viewer.classList.remove('hide'); // Show the modal
-    }
-    
-    function closeViewer() {
-        viewer.classList.add('hide'); // Hide the modal
-        viewerImage.src = ''; // Reset the image source
-    }
-    
-
-    function viewHandler(event) {
-        if (event.target.tagName === 'IMG') {
-            const src = event.target.src;
-            const fullSrc = src.replace('-sm', '-full');
-            viewerTemplate(fullSrc, event.target.alt);
-        }
-    }
-
-
-
-    menuButton.addEventListener('click', toggleMenu);
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    document.querySelector('.gallery').addEventListener('click', viewHandler);
-    closeViewerButton.addEventListener('click', closeViewer); // Add event listener to close button
 });

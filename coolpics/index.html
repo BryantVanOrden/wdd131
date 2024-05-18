@@ -7,17 +7,18 @@
     <title>Responsive Gallery</title>
 </head>
 <body>
-
     <header>Cool Pics 📸</header>
 
-    <nav class="menu">
+    <nav id="mainNav">
         <a href="#">Home</a>
         <a href="#">People</a>
         <a href="#">Places</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
     </nav>
-    <button class="menu-button">Menu</button>
+
+    <button id="menuBtn">Menu</button>
+    <button id="hideBtn" style="display:none;">Hide</button>
 
     <div>
         <h3>Current Work</h3>
@@ -38,11 +39,12 @@
     <footer>
         &copy; 2024 Bryant Van Orden
     </footer>
-
-    <div class="viewer hide">
+    
+    <div class="viewer">
         <button class="close-viewer">X</button>
-        <img src="" alt="Image Description">
+        <img src="image.jpeg" alt="alt description">
     </div>
+    
 
     <script src="script.js"></script>
 </body>

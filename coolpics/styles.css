@@ -37,7 +37,6 @@ h3 {
     box-shadow: 8px 8px 15px rgba(0,0,0,.3); 
     border: 8px solid white; 
     margin: 5px; 
-    align-items: center;
 }
 
 .gallery {
@@ -57,59 +56,55 @@ footer {
     color: white;
 }
 
-.menu-button {
-    display: none;
+#menuBtn {
     background-color: #333;
     color: white;
-    padding: 10px;
+    padding: 14px 20px;
     border: none;
     cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
 }
 
-@media (max-width: 600px) {
-    nav {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .menu-button {
-        display: block;
-        margin: 10px auto;
-    }
-
-    .gallery img {
-        width: calc(100% - 10px);
-        height: auto;
-    }
-
-    .menu.show {
-        display: flex;
-    }
-}
-
-.hide {
-    display: none;
+#hideBtn {
+    background-color: #333;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
 }
 
 .viewer {
     position: fixed;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center the modal */
-    background: rgba(0, 0, 0, 0.75);
-    padding: 20px;
-    z-index: 1000;
-    color: white;
-    display: none; /* Initially hide the modal */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
 }
 
 .viewer img {
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
-    margin: 0 auto; /* Center the image */
+    max-height: 80vh; 
+    max-width: 80vw; 
+    object-fit: contain; 
 }
+
+
+@media (min-width: 600px) {
+    .viewer {
+        padding: 100px; 
+    }
+}
+
+
 
 .close-viewer {
     position: absolute;
@@ -118,7 +113,21 @@ footer {
     background: none;
     border: none;
     color: white;
-    font-size: 2rem;
+    font-size: 24px;
     cursor: pointer;
+    z-index: 1; 
 }
 
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        display: none;
+    }
+
+    .gallery img {
+        width: calc(100% - 10px);
+        height: auto;
+    }
+}
