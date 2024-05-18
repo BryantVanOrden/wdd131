@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const menuButton = document.querySelector('.menu-button');
     const menu = document.querySelector('nav');
+    const viewer = document.querySelector('.viewer');
+    const viewerImage = viewer.querySelector('img');
+    const closeViewerButton = viewer.querySelector('.close-viewer');
 
     function toggleMenu() {
         menu.classList.toggle('show');
@@ -18,8 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function viewerTemplate(pic, alt) {
         viewerImage.src = pic;
         viewerImage.alt = alt;
-        viewer.classList.remove('hide');
+        viewer.classList.remove('hide'); // Show the modal
     }
+    
+    function closeViewer() {
+        viewer.classList.add('hide'); // Hide the modal
+        viewerImage.src = ''; // Reset the image source
+    }
+    
 
     function viewHandler(event) {
         if (event.target.tagName === 'IMG') {
@@ -29,14 +38,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function closeViewer() {
-        viewer.classList.add('hide');
-    }
+
 
     menuButton.addEventListener('click', toggleMenu);
     window.addEventListener('resize', handleResize);
     handleResize();
 
     document.querySelector('.gallery').addEventListener('click', viewHandler);
-    closeViewerButton.addEventListener('click', closeViewer);
+    closeViewerButton.addEventListener('click', closeViewer); // Add event listener to close button
 });
