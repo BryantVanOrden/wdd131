@@ -12,7 +12,7 @@ body {
 }
 
 h3 {
-    color: #AF1B3F
+    color: #AF1B3F;
 }
 
 
@@ -30,11 +30,13 @@ h3 {
     margin-right: 10px; 
 }
 
+
 .center-title {
     text-align: center;
     color: black;
     padding: 15px;
 }
+
 
 .content {
     flex: 1; 
@@ -44,13 +46,25 @@ h3 {
 }
 
 
-
-.left-sidebar, .right-sidebar {
+.right-sidebar {
     width: 20%;
     background-color: #f2f2f2;
     padding: 15px;
     border-left: 2px solid #EFC69B;
     border-right: 2px solid #EFC69B; 
+}
+
+.left-sidebar {
+    width: 20%;
+    padding: 15px;
+    display: grid;
+    grid-template-rows: auto;
+    gap: -20px;
+}
+
+.left-sidebar .article-details {
+    text-align: right;
+    font-size: larger;
 }
 
 
@@ -71,10 +85,12 @@ h3 {
     font-family: 'Lora', serif;
 }
 
+
 .flex-container {
     display: flex;
     justify-content: space-between; 
 }
+
 
 .skiptocontent a {
     position: absolute;
@@ -83,4 +99,42 @@ h3 {
 
 .skiptocontent a:focus {
     left: auto;
+}
+
+
+.article {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #EFC69B;
+}
+
+.article-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.article-date {
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.article-details {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.article h3 {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.article-content {
+    margin-top: 10px;
+    padding: 15px;
+    flex: 1;
 }
