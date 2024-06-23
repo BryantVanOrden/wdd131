@@ -1,42 +1,77 @@
-// main.js
+import recipes from './recipes.mjs';
 
-// Import the recipes from recipes.mjs
-import { recipes } from './recipes.mjs';
+document.addEventListener('DOMContentLoaded', () => {
+    const recipesContainer = document.getElementById('recipes-container');
+    const searchInput = document.getElementById('search-bar');
 
-// Generate the recipe boxes dynamically
-const recipeBoxes = recipes.map(recipe => `
-    <div class="recipe-box">
-        <img src="${recipe.image}" alt="${recipe.name}" class="recipe-image">
-        <div class="recipe-details">
-            <span class="recipe-type">${recipe.tags.join(', ')}</span>
-            <h3>${recipe.name}</h3>
-            <div class="recipe-rating">${'★'.repeat(recipe.rating)}${'☆'.repeat(5 - recipe.rating)}</div>
-            <p>${recipe.description}</p>
-        </div>
-    </div>
-`).join('');
+    // Function to render recipes based on the filtered list
+    const renderRecipes = (filteredRecipes) => {
+        recipesContainer.innerHTML = ''; // Clear previous content
 
-// Create the main content
-const appContainer = document.getElementById('app');
-appContainer.innerHTML = `
-    <header>
-        <img src="images/recipe-book.png" alt="Recipe Book" id="header-image">
-        <img src="images/recipe-book-word.png" alt="Recipe Book" id="header-image">
-    </header>
-    <div id="search-container">
-        <input type="text" id="search-bar" placeholder="Search recipes...">
-        <button id="search-button"><img src="images/search.svg" alt="Search"></button>
-    </div>
-    <hr>
-    <main id="recipes-container">
-        ${recipeBoxes}
-    </main>
-    <footer>
-        <a href="https://www.flaticon.com/free-icons/recipe" title="Recipe icons">Recipe icons created by Freepik - Flaticon</a>
-        <div class="social-icons">
-            <img src="images/instagram_icon.svg" alt="Instagram">
-            <img src="images/pinterest_icon.svg" alt="Pinterest">
-            <img src="images/youtube_icon.svg" alt="YouTube">
-        </div>
-    </footer>
-`;
+        filteredRecipes.forEach(recipe => {
+            const recipeCard = document.createElement('div');
+            recipeCard.classList.add('recipe-card');
+
+            const recipeImage = document.createElement('img');
+            recipeImage.src = recipe.image;
+            recipeImage.alt = recipe.name;
+            recipeImage.classList.add('recipe-image');
+
+            const recipeDetails = document.createElement('div');
+            recipeDetails.classList.add('recipe-details');
+
+            const recipeTagsContainer = document.createElement('div');
+            recipeTagsContainer.classList.add('recipe-tags-container');
+            recipe.tags.forEach(tag => {
+                const recipeTag = document.createElement('div');
+                recipeTag.classList.add('recipe-tag');
+                recipeTag.textContent = tag;
+                recipeTagsContainer.appendChild(recipeTag);
+            });
+
+            const recipeTitle = document.createElement('h2');
+            recipeTitle.classList.add('recipe-title');
+            recipeTitle.textContent = recipe.name;
+
+            const recipeStars = document.createElement('div');
+            recipeStars.classList.add('recipe-stars');
+            recipeStars.textContent = '★'.repeat(Math.floor(recipe.rating)) + '☆'.repeat(5 - Math.floor(recipe.rating));
+
+            const recipeDescription = document.createElement('p');
+            recipeDescription.classList.add('recipe-description');
+            recipeDescription.textContent = recipe.description;
+
+            recipeDetails.appendChild(recipeTagsContainer);
+            recipeDetails.appendChild(recipeTitle);
+            recipeDetails.appendChild(recipeStars);
+            recipeDetails.appendChild(recipeDescription);
+
+            recipeCard.appendChild(recipeImage);
+            recipeCard.appendChild(recipeDetails);
+            recipesContainer.appendChild(recipeCard);
+        });
+    };
+
+    // Initial rendering of all recipes
+    renderRecipes(recipes);
+
+    // Function to filter recipes based on search input
+    const filterRecipes = (searchText) => {
+        searchText = searchText.toLowerCase();
+        const filteredRecipes = recipes.filter(recipe => {
+            // Check if the recipe name, description, or any tag includes the searchText
+            return (
+                recipe.name.toLowerCase().includes(searchText) ||
+                recipe.description.toLowerCase().includes(searchText) ||
+                recipe.tags.some(tag => tag.toLowerCase().includes(searchText))
+            );
+        });
+        renderRecipes(filteredRecipes);
+    };
+
+    // Event listener for input in the search bar
+    searchInput.addEventListener('input', (event) => {
+        const searchText = event.target.value.trim(); // Get the input value and trim whitespace
+        filterRecipes(searchText);
+    });
+});

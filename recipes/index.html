@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <title>Recipe Book</title>
     <link rel="stylesheet" href="recipes.css">
+    <!-- Social Media Meta Tags -->
+    <!-- Pinterest Meta Tags -->
+    <meta property="og:title" content="Recipe Book">
+    <meta property="og:description" content="Discover delicious recipes for every occasion.">
+    <meta property="og:image" content="https://yourwebsite.com/images/recipe-book.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <!-- YouTube Meta Tags -->
+    <meta name="og:title" content="Recipe Book">
+    <meta name="og:description" content="Discover delicious recipes for every occasion.">
+    <meta name="og:image" content="https://yourwebsite.com/images/recipe-book.png">
+    <meta name="og:url" content="https://yourwebsite.com">
 </head>
 <body>
-    <div id="app"></div>
+    <header>
+        <img src="images/recipe-book.png" alt="Recipe Book" id="header-image">
+        <img src="images/recipe-book-word.png" alt="Recipe Book" id="header-image">
+    </header>
+    <div id="search-container">
+        <input type="text" id="search-bar" placeholder="Search recipes...">
+        <button id="search-button"><img src="images/search.svg" alt="Search"></button>
+    </div>
+    <hr>
+    <div id="recipes-container"></div>
+    <footer>
+        <a href="https://www.flaticon.com/free-icons/recipe" title="Recipe icons" id="footer-link">Recipe icons created by Freepik - Flaticon</a>
+        <div class="social-icons">
+            <a href="https://instagram.com"><img src="images/instagram_icon.svg" alt="Instagram"></a>
+            <a href="https://pinterest.com"><img src="images/pinterest_icon.svg" alt="Pinterest"></a>
+            <a href="https://youtube.com"><img src="images/youtube_icon.svg" alt="YouTube"></a>
+        </div>
+    </footer>
     <script type="module" src="main.js"></script>
 </body>
 </html>
