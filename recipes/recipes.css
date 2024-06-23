@@ -1,0 +1,79 @@
+/* Add your styles here */
+body {
+    font-family: Arial, sans-serif;
+}
+header {
+    text-align: center;
+}
+#search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+#search-bar {
+    width: 100%;
+    padding: 10px;
+}
+#search-button {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: none;
+}
+hr {
+    margin-top: 20px;
+}
+#recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.recipe-box {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+}
+.recipe-image {
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+    height: auto;
+}
+.recipe-details {
+    padding: 15px;
+}
+.recipe-type {
+    font-weight: bold;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center the text and icons */
+    padding: 20px;
+}
+
+footer span {
+    /* Text styles (adjust as needed) */
+    font-size: 14px;
+    color: #888;
+}
+
+.social-icons {
+    /* Adjust spacing between icons if necessary */
+    margin-left: auto; /* Push icons to the right */
+}
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px; /* Add spacing between icons */
+}
+#header-image {
+    width: auto; /* Set your desired width */
+    height: 50px; /* Maintain aspect ratio */
+}
+#search-button img {
+    width: 24px; /* Set your desired width */
+    height: 24px; /* Set your desired height */
+}
