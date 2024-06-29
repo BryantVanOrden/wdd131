@@ -52,7 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Function to shuffle the recipes
+    const shuffleRecipes = (recipesArray) => {
+        for (let i = recipesArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [recipesArray[i], recipesArray[j]] = [recipesArray[j], recipesArray[i]];
+        }
+    };
+
     // Initial rendering of all recipes
+    shuffleRecipes(recipes);
     renderRecipes(recipes);
 
     // Function to filter recipes based on search input
@@ -66,6 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 recipe.tags.some(tag => tag.toLowerCase().includes(searchText))
             );
         });
+        if (searchText === '') {
+            shuffleRecipes(filteredRecipes);
+        }
         renderRecipes(filteredRecipes);
     };
 
