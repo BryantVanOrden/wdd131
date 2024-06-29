@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const recipesContainer = document.getElementById('recipes-container');
     const searchInput = document.getElementById('search-bar');
 
-    // Function to render recipes based on the filtered list
+    
     const renderRecipes = (filteredRecipes) => {
-        recipesContainer.innerHTML = ''; // Clear previous content
+        recipesContainer.innerHTML = ''; 
 
         filteredRecipes.forEach(recipe => {
             const recipeCard = document.createElement('div');
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Function to shuffle the recipes
+    
     const shuffleRecipes = (recipesArray) => {
         for (let i = recipesArray.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -60,15 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initial rendering of all recipes
+    
     shuffleRecipes(recipes);
     renderRecipes(recipes);
 
-    // Function to filter recipes based on search input
+    
     const filterRecipes = (searchText) => {
         searchText = searchText.toLowerCase();
         const filteredRecipes = recipes.filter(recipe => {
-            // Check if the recipe name, description, or any tag includes the searchText
+            
             return (
                 recipe.name.toLowerCase().includes(searchText) ||
                 recipe.description.toLowerCase().includes(searchText) ||
@@ -81,9 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
         renderRecipes(filteredRecipes);
     };
 
-    // Event listener for input in the search bar
+    
     searchInput.addEventListener('input', (event) => {
-        const searchText = event.target.value.trim(); // Get the input value and trim whitespace
+        const searchText = event.target.value.trim(); 
         filterRecipes(searchText);
     });
 });
